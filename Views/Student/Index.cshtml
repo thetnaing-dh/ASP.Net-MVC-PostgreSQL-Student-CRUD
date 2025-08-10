@@ -1,0 +1,55 @@
+﻿@using StudentManagementSystem.Models
+@model IEnumerable<Student>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<div class="container mt-5">
+    <h2>@ViewData["Title"] </h2>
+    <div class="col end-0 mb-2">
+        <a asp-action="Create" class="btn btn-primary">Add New Student</a>
+    </div>
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <table class="table table-striped table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Student Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Edit</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(Model != null && Model.Any())
+                {
+                    @foreach(var student in Model)
+                    {
+                        <tr>
+                            <td>@student.Id</td>
+                            <td>@student.Name</td>
+                            <td>@student.Phone</td>
+                            <td>@student.Address</td>
+                            <td>@student.Email</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-warning">Edit</a>
+                                <a asp-action="Details" asp-route-id="@student.Id" class="btn btn-info">Detials</a>
+                                <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            There is no student yet.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

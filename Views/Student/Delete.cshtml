@@ -1,0 +1,37 @@
+﻿@using StudentManagementSystem.Models
+@model Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+<div class="container mt-5">
+    <h2>@ViewData["Title"] </h2>
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <form asp-action="Delete" method="post">
+            <div class="flex-row">
+                <label asp-for="Name" class="col-form-label-lg"></label>
+                <input asp-for="Name" class="form-control" readonly/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="flex-row">
+                <label asp-for="Phone" class="col-form-label-lg"></label>
+                <input asp-for="Phone" class="form-control" type="number" readonly/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="flex-row">
+                <label asp-for="Address" class="col-form-label-lg"></label>
+                <input asp-for="Address" class="form-control" readonly/>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="flex-row">
+                <label asp-for="Email" class="col-form-label-lg"></label>
+                <input asp-for="Email" class="form-control" type="email" readonly/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="flex-row mt-2">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <input type="submit" asp-action="Index" value="Cancel" class="btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
